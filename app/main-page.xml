@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="{{ isDark ? 'dark' : '' }}">
+    <ActionBar title="Plant Identifier">
+        <ActionItem tap="{{ toggleTheme }}" ios.position="right" android.position="actionBar">
+            <Label text="{{ isDark ? '🌞' : '🌙' }}" />
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <ScrollView row="0">
+            <StackLayout class="p-4">
+                <Label text="Identify Plants" class="text-3xl font-bold text-center mb-2" />
+                <Label text="Take a photo or upload an image to identify plants" class="text-lg text-center text-gray-500 mb-4" textWrap="true" />
+
+                <GridLayout columns="*, *" class="mb-4">
+                    <Button col="0" text="Take Photo" tap="{{ onTakePhoto }}" class="m-2 bg-green-500 text-white" />
+                    <Button col="1" text="Upload Image" tap="{{ onSelectImage }}" class="m-2 bg-green-500 text-white" />
+                </GridLayout>
+
+                <GridLayout class="camera-container mb-4">
+                    <Camera id="camera" class="rounded-lg" />
+                </GridLayout>
+
+                <Image src="{{ selectedImage }}" class="w-full h-64 rounded-lg mb-4" visibility="{{ selectedImage ? 'visible' : 'collapsed' }}" stretch="aspectFill" />
+                
+                <Label text="{{ identifiedPlant }}" class="text-lg text-center" textWrap="true" visibility="{{ identifiedPlant ? 'visible' : 'collapsed' }}" />
+            </StackLayout>
+        </ScrollView>
+
+        <GridLayout row="1" columns="*, *, *" class="footer">
+            <StackLayout col="0" tap="{{ onHistoryTap }}" class="text-center">
+                <Label text="📜" class="text-2xl" />
+                <Label text="History" />
+            </StackLayout>
+            <StackLayout col="1" tap="{{ onFavoritesTap }}" class="text-center">
+                <Label text="❤️" class="text-2xl" />
+                <Label text="Favorites" />
+            </StackLayout>
+            <StackLayout col="2" tap="{{ onSettingsTap }}" class="text-center">
+                <Label text="⚙️" class="text-2xl" />
+                <Label text="Settings" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

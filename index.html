@@ -1,23 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Identifier</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="light-mode">
+    <header>
+        <nav>
+            <h1>Plant Identifier</h1>
+            <button id="theme-toggle" aria-label="Toggle theme">
+                <span class="moon">🌙</span>
+                <span class="sun">☀️</span>
+            </button>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section class="hero">
+            <h2>Identify Plants</h2>
+            <p>Take a photo or upload an image to identify plants</p>
+        </section>
+
+        <section class="upload-section">
+            <div class="buttons">
+                <button class="btn primary" id="camera-btn">
+                    <span>📸</span> Take Photo
+                </button>
+                <button class="btn primary" id="upload-btn">
+                    <span>🖼️</span> Upload Image
+                </button>
+            </div>
+            <input type="file" id="file-input" accept="image/*" capture="environment" hidden>
+            
+            <div class="preview-container">
+                <video id="camera-preview" autoplay playsinline hidden></video>
+                <canvas id="photo-canvas" hidden></canvas>
+                <img id="preview-image" alt="Preview" hidden>
+            </div>
+
+            <div id="result" class="result" hidden>
+                <h3>Identified Plant:</h3>
+                <p id="plant-name"></p>
+            </div>
+        </section>
     </main>
-  </body>
+
+    <footer>
+        <nav>
+            <button class="footer-btn" data-section="history">
+                <span>📜</span>
+                <span>History</span>
+            </button>
+            <button class="footer-btn" data-section="favorites">
+                <span>❤️</span>
+                <span>Favorites</span>
+            </button>
+            <button class="footer-btn" data-section="settings">
+                <span>⚙️</span>
+                <span>Settings</span>
+            </button>
+        </nav>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+</body>
 </html>
